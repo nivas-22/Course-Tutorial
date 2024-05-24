@@ -1,0 +1,26 @@
+ALB - 10.10.0.0/16
+ELB-PUB-A - 10.10.0.0/24
+ELB-PUB-B - 10.10.1.0/24
+
+ELB-RT : IGW with ELB
+
+EC2-PUB-A - 10.10.11.0/24
+EC2-PUB-B - 10.10.12.0/24
+
+#!/bin/bash
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+mkdir /var/www/html/hi
+echo "<h1> Hi there..you reached to right backend ec2 </h1>" > /var/www/html/hi/index.html
+echo "configured successfully"
+
+
+
+#!/bin/bash
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+mkdir /var/www/html/bye
+echo "<h1> Bye Guys.. see you soon </h1>" > /var/www/html/bye/index.html
+echo "configured successfully"
