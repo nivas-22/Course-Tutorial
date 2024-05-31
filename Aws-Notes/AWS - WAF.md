@@ -316,3 +316,7 @@ If you want to remove the blocking, you can go to the Web ACL and delete the rel
 # Conclusion
 
 Securing web applications is important in today’s digital landscape, and AWS WAF offers a powerful tool to protect against common web threats. By understanding AWS WAF’s capabilities, setting it up effectively, and implementing basic protection strategies, you can safeguard your applications from attacks such as SQL injections, XSS, and DDoS. Regularly revisiting and updating your WAF configurations is essential to adapt to evolving threats. Embrace AWS WAF to make sure your web applications remain secure, reliable, and trustworthy.
+
+
+
+![image](https://github.com/nivas-22/Course-Tutorial/assets/122221537/6b0ca5e1-4dd5-49a7-ae45-fa569d11c564)
