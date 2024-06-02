@@ -1,0 +1,359 @@
+☸ Kubernetes troubleshooting Commands:-
+
+1. kubectl get pods - This command will show the status of all pods in the current namespace.
+
+2. kubectl describe pod <pod-name> - This command will give detailed information about the specified pod, including its current status, events, and container statuses.
+
+3. kubectl logs <pod-name> <container-name> - This command will print the logs of the specified container within the specified pod.
+
+4. kubectl exec -it <pod-name> <container-name> /bin/bash - This command will open a shell inside the specified container within the specified pod, which can be useful for debugging.
+
+5. kubectl get events - This command will show the recent events that have occurred in the cluster, which can help identify any issues.
+
+6. kubectl describe node <node-name> - This command will provide detailed information about the specified node, including its status and any issues that might be affecting it.
+
+7. kubectl get services - This command will show the status of all services in the current namespace.
+
+8. kubectl describe service <service-name> - This command will provide detailed information about the specified service, including its current status and any issues that might be affecting it.
+
+9. kubectl get deployments - This command will show the status of all deployments in the current namespace.
+
+10. kubectl describe deployment <deployment-name> - This command will provide detailed information about the specified deployment, including its current status and any issues that might be affecting it.
+
+☸ kubectl Commands:-
+
+1. kubectl version - This command displays the version of both the Kubectl client and the Kubernetes cluster it is connected to.
+
+2. kubectl cluster-info - This command displays information about the Kubernetes cluster, including the cluster API endpoint.
+
+3. kubectl get - This command retrieves resources such as pods, services, deployments, and nodes.
+
+4. kubectl create - This command creates resources such as pods, services, deployments, and namespaces.
+
+5. kubectl apply - This command applies changes to existing resources or creates new ones based on a YAML or JSON file.
+
+6. kubectl delete - This command deletes resources such as pods, services, deployments, and namespaces.
+
+7. kubectl logs - This command retrieves logs from a container running inside a pod.
+
+8. kubectl exec - This command allows you to execute a command inside a container running inside a pod.
+
+9. kubectl port-forward - This command creates a tunnel between a local machine and a pod in order to access a service running inside the pod.
+
+10. kubectl describe - This command provides detailed information about a Kubernetes resource, such as a pod, service, or deployment.
+
+11. kubectl edit - This command allows you to edit the configuration of a Kubernetes resource.
+
+12. kubectl rollout - This command allows you to manage rolling updates for deployments.
+
+
+---------------------------------------------------
+
+
+☸ Analyzing logs:-
+
+1.kubectl logs <pod-name> - This command retrieves the logs of a specific pod.
+
+2. kubectl logs -f <pod-name> - This command streams the logs of a specific pod in real-time, useful for monitoring logs as they occur.
+
+3. kubectl logs <pod-name> <container-name> - This command retrieves the logs of a specific container running in a pod with multiple containers.
+
+4. kubectl logs -f <pod-name> <container-name> - This command streams the logs of a specific container running in a pod with multiple containers in real-time.
+
+5. kubectl logs --tail=<number-of-lines> <pod-name> - This command retrieves the specified number of lines from the end of the logs of a specific pod.
+
+6. kubectl logs --since=<time> <pod-name> - This command retrieves the logs of a specific pod since a specified time. The time parameter can be specified in the format of 10s for 10 seconds, 1m for 1 minute, 1h for 1 hour, or 1d for 1 day.
+
+7. kubectl logs --timestamps <pod-name> - This command adds timestamps to the logs of a specific pod.
+
+8. kubectl logs --previous <pod-name> - This command retrieves the logs of the previous container instance of a specific pod. This is useful for debugging issues after a pod has been restarted.
+
+9. kubectl logs <pod-name> -c <container-name> - This command retrieves the logs of a specific container in a specific pod.
+
+10. kubectl logs <pod-name> -n <namespace-name> - This command retrieves the logs of a specific pod in a specific namespace.
+
+11. kubectl logs <pod-name> --all-containers - This command retrieves the logs of all containers running in a specific pod.
+
+☸ Debugging Container Image
+
+1. kubectl run -i --tty --image=<image-name> -- sh - This command starts a new pod using the specified container image, and opens an interactive shell session inside the pod. You can use this shell session to investigate issues with the container image.
+
+2. kubectl exec -it <pod-name> -- sh - This command opens an interactive shell session inside an existing pod. You can use this shell session to investigate issues with the container image running inside the pod.
+
+3. kubectl describe pod <pod-name> - This command displays detailed information about a specific pod, including the image name and version. You can use this command to verify that the correct container image is being used.
+
+4. kubectl logs <pod-name> - This command displays the logs of a specific pod. You can use this command to investigate any error messages or warnings that might be related to the container image.
+
+5. kubectl port-forward <pod-name> <local-port>:<remote-port> - This command forwards a local port to a port on the container running inside a specific pod. 
+
+6. kubectl exec -it <pod-name> -- <command> - This command allows you to execute a specific command inside a container running inside a pod.
+
+
+
+---------------------------------------------
+
+#Some common errors in hashtag#Kubernetes and few tips on hashtag#troubleshooting them:
+
+1. Pod in CrashLoopBackOff:
+ - Check the pod logs using kubectl logs.
+ - Ensure the required dependencies are available.
+
+2. ImagePullBackOff:
+ - Verify the image name and availability.
+ - Check image pull secrets and registry authentication.
+
+3. Invalid ClusterIP or Service Port:
+ - Ensure correct service and port configurations.
+ - Verify network policies and firewall rules.
+
+4. NodeNotReady: 
+ - Check the node's status with kubectl get nodes.
+ - Examine the kubelet logs on the node.
+
+5. Insufficient Resources:
+ - Confirm resource requests and limits in pod specifications.
+ - Use kubectl describe to analyze resource allocations.
+
+6. CrashLoopBackOff for Init Containers:
+ - Inspect init container logs and configurations.
+ - Ensure init container dependencies are satisfied.
+
+7. ConfigMap or Secret Mounting Issues:
+ - Verify ConfigMap/Secret existence and correctness.
+ - Check pod configuration for volume mounts.
+
+8. Pod stuck in Pending state:
+ - Investigate resource constraints on the nodes.
+ - Examine events with kubectl describe pod.
+
+9. API Server Unreachable:
+ - Verify API server status.
+ - Check kubeconfig file for correct API server address.
+
+10. Network Policy Restrictions:
+ - Inspect network policies.
+ - Ensure correct podSelector and policy rules.
+
+11. RBAC Permission Issues:
+ - Validate service account permissions.
+ - Check ClusterRoleBindings and RoleBindings.
+
+12. PersistentVolumeClaims (PVC) Pending:
+ - Check available storage classes.
+ - Ensure the requested storage is available.
+
+13. NodePort Service Not Accessible:
+ - Confirm the node's firewall allows the specified port.
+ - Check Service and NodePort configurations.
+
+14. Kube-proxy Issues:
+ - Inspect kube-proxy logs for errors.
+ - Verify kube-proxy configuration.
+
+15. DNS Resolution Problems:
+ - Verify CoreDNS status.
+ - Check DNS policy and cluster DNS settings.
+
+16. Pod Eviction Due to Resource Pressure:
+ - Check resource usage across nodes.
+ - Adjust resource limits or add more nodes.
+
+17. NodeOutOfMemory:
+ - Inspect node memory usage.
+ - Check for memory leaks in applications.
+
+18. Volume Mount Permissions:
+ - Ensure correct file permissions in mounted volumes.
+ - Verify SELinux or AppArmor settings.
+
+19. Ingress Controller Misconfiguration:
+ - Validate Ingress resource configurations.
+ - Check the Ingress controller logs.
+
+20. ETCD Cluster Issues:
+ - Check etcd pod logs.
+ - Verify etcd cluster health.
+
+21. CNI Plugin Issues:
+ - Verify CNI plugin status on nodes.
+ - Check plugin configurations and logs.
+
+22. Invalid Labels or Selectors:
+ - Ensure correct labels and selectors in resources.
+ - Use kubectl get with appropriate labels.
+
+
+-----------------------------------------------------------
+
+
+#Common Errors in hashtag#Kubernetes and Tips on hashtag#Troubleshooting Them:-
+
+1. Pod Security Policies:
+ - Check PodSecurityPolicy (PSP) violations.
+ - Adjust PSP or use PodSecurity admission controllers.
+
+2. Kubelet Certificate Rotation:
+ - Monitor kubelet certificate expiration.
+ - Rotate certificates if needed.
+
+3. Cluster Autoscaler Issues:
+ - Verify autoscaler configuration.
+ - Check node group scaling policies.
+
+4. ServiceAccount Token Expiration:
+ - Ensure service account tokens are not expired.
+ - Rotate service account tokens if needed.
+
+5. Scheduler Issues:
+ - Inspect scheduler logs for errors.
+ - Check for node affinity and anti-affinity issues.
+
+6. Readiness and Liveness Probe Failures:
+ - Review pod configurations for probes.
+ - Check probe logs and adjust thresholds.
+
+7. Inconsistent API Versions:
+ - Verify client and server API versions match.
+ - Use compatible kubectl versions.
+
+8. Kube-dns Service Missing:
+ - Ensure CoreDNS (or kube-dns) service is running.
+ - Validate DNS settings in kubelet configurations.
+
+9. ImageRegistry Authentication:
+ - Check image pull secrets in pod specifications.
+ - Verify registry credentials.
+
+10. HorizontalPodAutoscaler Not Scaling:
+ - Check metrics server and HPA configurations.
+ - Inspect HPA events and logs.
+
+11. Pod Affinity/Anti-affinity Issues:
+ - Verify pod affinity/anti-affinity rules.
+ - Check node labels for affinity.
+
+12. Custom Resource Definitions (CRD) Issues:
+ - Validate CRD creation and versions.
+ - Check for CRD controller errors.
+
+13. Resource Quotas Exceeded:
+ - Review resource quotas with kubectl describe.
+ - Adjust quotas or request more resources.
+
+14. RuntimeClass Configuration Issues:
+ - Verify RuntimeClass in PodSpec.
+ - Check container runtime compatibility.
+
+15. Secrets Decoding Errors:
+ - Validate encoded secrets.
+ - Ensure proper base64 encoding.
+
+16. Invalid Ingress Controller Configuration:
+ - Inspect Ingress controller logs.
+ - Verify controller configurations.
+
+17. Pod Priority and Preemption Issues:
+ - Check priorityClass in PodSpec.
+ - Verify kube-scheduler settings.
+
+18. Node Network Connectivity Issues:
+ - Check node network configurations.
+ - Verify firewall rules on nodes.
+
+19. Service External IP Not Assigned:
+ - Check cloud provider integration.
+ - Verify LoadBalancer service configurations.
+
+20. PodSecurityContext Misconfigurations:
+ - Validate pod security context settings.
+ - Ensure compatibility with node settings.
+
+21. Kubelet Certificate Rotation Issues:
+ - Monitor and rotate kubelet certificates.
+ - Verify certificate expiration dates.
+
+22. Volume Plugin Not Loaded:
+ - Check kubelet logs for volume plugin errors.
+ - Verify plugin installation and configuration.
+
+23. NodeDrain Failures:
+ - Check node drain status with kubectl drain.
+ - Investigate any evicted pods.
+
+
+------------------------------------------------------
+
+
+
+
+
+
+Kubernetes (K8s) networking is a complex but critical aspect of deploying and managing containerized applications. There are several networking solutions (also known as Container Network Interfaces or CNIs) that Kubernetes supports to handle the networking needs.
+
+#Types of #kubernetes #networking:-
+
+1. #Calico
+- Type: Network policy and overlay network provider.
+- Key Features:
+- Uses BGP (Border Gateway Protocol) for routing.
+- Supports network policies for security.
+- Can operate in both layer 3 (routing) and layer 2 (bridging) modes.
+- Supports both IPv4 and IPv6.
+- Can be used with or without an overlay network (pure IP networking).
+
+2. #Flannel
+- Type: Simple and easy-to-configure overlay network provider.
+- Key Features:
+- Uses VXLAN or other backend protocols for the overlay network.
+- Designed to be simple and robust.
+- Provides basic networking without many advanced features.
+- Commonly used in less complex setups.
+
+3. #Weave
+- Type: Overlay network provider.
+- Key Features:
+- Uses a mesh networking approach.
+- Supports encryption out-of-the-box.
+- Provides network policy features.
+- Allows multicast networking.
+- Easy to set up and manage.
+
+4. #Cilium
+- Type: Advanced networking and security solution using eBPF (extended Berkeley Packet Filter).
+- Key Features:
+- Provides deep visibility and control over network traffic.
+- Uses eBPF for efficient packet processing and security enforcement.
+- Supports network policies and monitoring.
+- Can perform Layer 7 (application layer) filtering.
+- Highly scalable and suitable for complex environments.
+
+5. #Kube-Router
+- Type: All-in-one solution for networking, network policy, and load balancing.
+- Key Features:
+- Integrates with BGP for routing.
+- Provides network policies.
+- Can be used for service proxying and load balancing.
+- Combines multiple functionalities into a single binary.
+
+6. #OVN (Open Virtual Network)
+- Type: Network virtualization system.
+- Key Features:
+- Built on top of Open vSwitch (OVS).
+- Provides virtual networking features.
+- Supports network policies.
+
+7. #Canal
+- Type: Combination of Calico and Flannel.
+- Key Features:
+- Uses Flannel for networking and Calico for network policies.
+- Provides the best of both worlds: simplicity of Flannel and the advanced features of Calico.
+- Suitable for environments needing both overlay networking and network policies.
+
+8. #Multus
+- Type: Meta CNI plugin.
+- Key Features:
+- Allows attaching multiple network interfaces to pods.
+- Supports the use of multiple CNIs in a single Kubernetes cluster.
+- Useful for complex networking requirements where pods need multiple network connections.
+#Note:-
+Choosing the right CNI depends on your specific requirements, such as ease of setup, performance, scalability, security, and the complexity of your network policies.
