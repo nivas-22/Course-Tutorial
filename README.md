@@ -28,3 +28,6 @@ Follow the Roadmap:
 22. Starting Applying for Jobs
 
 
+**SSH Command**
+
+scp -i /Users/nde041/Downloads/key.pem -r /Users/nde041/Documents/Nivas/Terraform ec2-user@11.11.11.11:/home/ec2-user/
