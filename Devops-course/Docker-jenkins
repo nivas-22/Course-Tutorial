@@ -1,0 +1,4 @@
+docker build -t regapp:v1 .;
+docker stop registerapp;
+docker rm registerapp;
+docker run -d --name registerapp -p 8081:8080 regapp:v1
