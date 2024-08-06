@@ -167,3 +167,33 @@ sudo setenforce 0
 sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 sudo systemctl enable --now kubelet
+
+
+---------------------------------------------------------------------------------
+
+# Base Image
+FROM nginx:alpine
+
+# Copy the index.html to the correct directory
+COPY index.html /usr/share/nginx/html/index.html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx service
+CMD ["nginx", "-g", "daemon off;"]
+
+
+
+-------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to DevOps Class</title>
+</head>
+<body>
+    <h1>Welcome to DevOps Class</h1>
+    <p>This is a custom page served by Nginx in a Docker container.</p>
+</body>
+</html>
