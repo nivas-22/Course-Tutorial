@@ -2,4 +2,4 @@
 ![[vpc archi.jpg]]
 
 
-obsidian://open?vault=Nivas&file=VPC
+https://share.note.sx/bdsniloy#zsF6YBJzyhNrV8qsnw/4meQbsjQ8T+GEeKu/h+Jx6Xk
