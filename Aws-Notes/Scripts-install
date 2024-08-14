@@ -202,3 +202,15 @@ CMD ["nginx", "-g", "daemon off;"]
 ---
 
 https://medium.com/@vaishnavipolichetti/deploy-nginx-application-on-ec2-instance-using-jenkins-3402322b508b
+
+
+sudo usermod -aG docker $USER
+groups $USER
+docker ps
+sudo systemctl start docker
+sudo systemctl enable docker
+ls -l /var/run/docker.sock
+sudo chown root:docker /var/run/docker.sock
+sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
+
