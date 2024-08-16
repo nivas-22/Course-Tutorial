@@ -21,6 +21,6 @@ echo "configured successfully"
 yum install httpd -y
 service httpd start
 chkconfig httpd on
-mkdir /var/www/html/bye
-echo "<h1> Bye Guys.. see you soon </h1>" > /var/www/html/bye/index.html
+mkdir /var/www/html/app2
+echo "<h1> welcome to Cloud World..! app2 is working.! </h1>" > /var/www/html/app2/index.html
 echo "configured successfully"
