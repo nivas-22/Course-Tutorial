@@ -214,3 +214,8 @@ sudo chown root:docker /var/run/docker.sock
 sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
 
+
+
+----------
+
+https://github.com/Dileeprithvi/Terraform/blob/master/terraform-ec2-user-data/variables.tf
