@@ -24,3 +24,6 @@ chkconfig httpd on
 mkdir /var/www/html/app2
 echo "<h1> welcome to Cloud World..! app2 is working.! </h1>" > /var/www/html/app2/index.html
 echo "configured successfully"
+
+
+https://clouddevsecops.medium.com/alb-path-based-routing-in-aws-6d2b4ca48526
