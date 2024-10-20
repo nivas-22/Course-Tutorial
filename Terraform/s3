@@ -1,0 +1,32 @@
+provider "aws" {
+  region = "us-east-1" # Specify your preferred region
+}
+
+resource "aws_s3_bucket" "static_website" {
+  bucket = "my-static-website-bucket" # Replace with a unique bucket name
+  acl    = "public-read"
+
+  website {
+    index_document = "index.html"
+    error_document = "error.html"
+  }
+
+  tags = {
+    Name        = "My Static Website Bucket"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_s3_bucket_object" "index" {
+  bucket = aws_s3_bucket.static_website.bucket
+  key    = "index.html"
+  source = "path/to/your/index.html" # Path to your local index.html file
+  acl    = "public-read"
+}
+
+resource "aws_s3_bucket_object" "error" {
+  bucket = aws_s3_bucket.static_website.bucket
+  key    = "error.html"
+  source = "path/to/your/error.html" # Path to your local error.html file
+  acl    = "public-read"
+}
