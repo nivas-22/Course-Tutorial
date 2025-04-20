@@ -1,0 +1,8 @@
+ python3 -m venv path/to/venv
+
+source path/to/venv/bin/activate
+
+python3 -m venv myenv
+source myenv/bin/activate
+pip install boto3
+python -c "import boto3; print('boto3 installed successfully')"
