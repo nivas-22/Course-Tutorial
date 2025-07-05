@@ -1,0 +1,8 @@
+{ "action": "create" }
+
+{
+  "action": "stop"
+}
+{ "action": "start" }
+
+{ "action": "terminate" }
