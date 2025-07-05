@@ -80,7 +80,7 @@ semi-structured - dynamo DB
 ### Begin Configuration :
 ```bash
 sudo su -
-yum -y install mariadb-server wget
+yum -y install mariadb105-server.x86_64
 systemctl enable mariadb
 systemctl start mariadb
 yum -y update
