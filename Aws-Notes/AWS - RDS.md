@@ -83,7 +83,7 @@ sudo su -
 yum -y install mariadb105-server.x86_64
 systemctl enable mariadb
 systemctl start mariadb
-yum -y update
+
 ```
 ### Set Environmental Variables
 ```bash
