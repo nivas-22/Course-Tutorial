@@ -202,6 +202,7 @@ CMD ["nginx", "-g", "daemon off;"]
 ---
 
 https://medium.com/@vaishnavipolichetti/deploy-nginx-application-on-ec2-instance-using-jenkins-3402322b508b
+https://medium.com/@saigokul187/ci-cd-pipeline-with-jenkins-maven-sonarqube-trivy-and-docker-for-automated-build-code-quality-b4e4b9c5a0b3
 
 
 sudo usermod -aG docker $USER
