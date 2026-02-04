@@ -28,8 +28,6 @@ Key Terms:
 5. Amazon Aurora
 6. mariaBD
 
-![[Pasted image 20240130205131.png]]
-
 RDS - Structured - My SQL
 Unstructured - redshift
 semi-structured - dynamo DB
@@ -107,7 +105,7 @@ rm /tmp/db.setup
 mysql -u root --password="${DBRootPassword}"
 USE ec2db;
 CREATE TABLE table1 (id INT, name VARCHAR(45));
-INSERT INTO table1 VALUES(1, 'Virat'), (2, 'Sachin'), (3, 'Dhoni'), (4, 'ABD');
+INSERT INTO table1 VALUES(1, 'Cloud'), (2, 'Developer'), (3, 'Tester'), (4, 'Devops');
 SELECT * FROM table1;
 ```
 ### Migration of Database in EC2 Instance to RDS Database:
